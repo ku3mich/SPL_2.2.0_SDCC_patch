@@ -1,11 +1,9 @@
-<<<<<<< HEAD
 Patch for STM8 Standard Peripherals Library v2.2.0
--------------------
+--------------------------------------------------
 
-with the great support by this forum I am nearly done with the SDCC port of the STM8 Standard Peripheral Library. 
+with the great support by the SDCC community I provide here an initial patch for SDCC of the STM8 Standard Peripheral Library available by STM from http://www.st.com/web/en/catalog/tools/FM147/CL1794/SC1807/SS1754/PF258009
 
 Technical status:
-  - basis is SPL v2.2.0 available from http://www.st.com/web/en/catalog/tools/FM147/CL1794/SC1807/SS1754/PF258009 
   - applied SDCC specific changes to some headers and sources (marked with "SDCC“)
   - changed all ISR headers in examples to skip ISR declaration (see open points)
   - added flash r/w for 24b addresses via inline assembly (thanks Philipp!)
@@ -26,7 +24,6 @@ Legal status:
   - STM has indicated that they may approve of distribution of the modified sources. But nothing official, yet
   - I would still prefer STM to support SDCC officially to assert future consistency. But so far no news on this
 
-Until one of the above happens, you can download the SDCC patch for the STM8 SPL v2.2.0 from https://github.com/gicking/SPL_2.2.0_SDCC_patch
 For instructions on patching see e.g. http://jungels.net/articles/diff-patch-ten-minutes.html. Please let me know if the patch works.
 
 My first impressions of the SPL are quite mixed. It seems much more complicated than e.g. Wiring for Arduino. However, as said before the STM8 SPL is very similar to the STM32 SPL. And for the latter with 100x registers, a HW-lib is almost mandatory. In addition STM provides a lot of ready-made software which is based on the SPL. So I guess it’s worth digging into… Let me know what you think!?
@@ -35,14 +32,3 @@ Any feedback and/or support on the above open points is highly welcome!
 
 Regards,
 Georg Icking-Konert
-
-====================================
-
-Revision History
-----------------
-
-1.0 (2015-02-16): initial release by Georg Icking-Konert
-=======
-# SPL_2.2.0_SDCC_patch
-SDCC patch of STM8 Standard Peripherals Library v2.2.0
->>>>>>> FETCH_HEAD
