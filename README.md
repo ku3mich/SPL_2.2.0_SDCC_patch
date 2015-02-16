@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 STM8_serial_flasher
 -------------------
 
@@ -25,3 +26,7 @@ Revision History
 ----------------
 
 1.0 (2014-12-21): initial release by Georg Icking-Konert under the Apache License 2.0
+=======
+# SPL_2.2.0_SDCC_patch
+SDCC patch of STM8 Standard Peripherals Library v2.2.0
+>>>>>>> FETCH_HEAD
