@@ -1,31 +1,47 @@
 <<<<<<< HEAD
-STM8_serial_flasher
+Patch for STM8 Standard Peripherals Library v2.2.0
 -------------------
 
-PC tool for uplading hexfiles to the STM8 microcontroller via COM port or USB using the built-in ROM bootloader (BSL) of the STM8. I wrote this tool, because the similar "Flash Loader Demonstrator" tool by STMicroelectronics (STM) only supports Windows.
+with the great support by this forum I am nearly done with the SDCC port of the STM8 Standard Peripheral Library. 
 
-Notes:
-  - for the popular STM8 Discovery Board an additional UART->USB adapter is required (e.g. see UM232R by Farnell), since the board connects to the PC only via SWIM (=debug interface)
-  - the tool has been tested under various operating systems. For a complete list see https://github.com/gicking/STM8_serial_flasher/wiki/Supported-Platforms
-  - the STM8 bootloader has to be enabled for uploading code
-    - for a virgin device this is automatically the case
-    - uploading code via STM8_serial_flasher activates the BSL by default (see 'usage')
-    - for other devices the BSL can be enabled via the free "ST Visual Programmer" tool (Windows only) by STM
-  - this software includes some RAM code by STM, which is required for flash programming. This code was copied from the freely available "Flash Loader Demonstrator" tool by STM. All rights to the contained RAM code remain with STM.
+Technical status:
+  - basis is SPL v2.2.0 available from http://www.st.com/web/en/catalog/tools/FM147/CL1794/SC1807/SS1754/PF258009 
+  - applied SDCC specific changes to some headers and sources (marked with "SDCC“)
+  - changed all ISR headers in examples to skip ISR declaration (see open points)
+  - added flash r/w for 24b addresses via inline assembly (thanks Philipp!)
+  - created a SDCC "template project“ (i.e. Makefile). See $(SPL)/Project/STM8S_StdPeriph_Template/
+  - created Win, Linux, and MacOSX batch scripts to compile and upload via https://github.com/gicking/STM8_serial_flasher 
+  - added Doxygen input for creating manual from sources, since provided UM is in Windows proprietary .chm format —> run Doxy to create HTML docu
+  - all SPL examples can be compiled but require editing of Makefile. Functionality tested partly (see open points)
 
-For more details and instructions on building and using the tool see the Wiki under https://github.com/gicking/STM8_serial_flasher/wiki
+Open points —> questions to you:
+  - I only have access to a STM8 Discovery Board and a custom PCB, so I can't verify all functionality -> additional checking is required
+  - since I am used to IDEs, the provided Makefile is far from perfect. For example it lacks automatic dependencies. Any help is appreciated!
+  - in the same content: a template project for an IDE would be nice, but which one…?
+  - acc. to UM flash block operations must be executed from RAM. How do I compile/link code for RAM execution?
+  - the trap handler requires a patch or recent nightly-build. If not present just comment out. However, traps shall be part of the next release (when?)
+  - SDCC requires the interrupt token AFTER the function name in ISR declaration. I have fixed all examples, but this requires a manual fix for other libs that rely on SPL (see STM homepage). However, according to Erik and Philipp this would require a change of the SDCC parser with associated risks --> not likely to be changed
 
-If you find any bugs or for feature requests, please send me a note.
+Legal status:
+  - STM has indicated that they may approve of distribution of the modified sources. But nothing official, yet
+  - I would still prefer STM to support SDCC officially to assert future consistency. But so far no news on this
 
-Have fun!
-Georg
+Until one of the above happens, you can download the SDCC patch for the STM8 SPL v2.2.0 from https://github.com/gicking/SPL_2.2.0_SDCC_patch
+For instructions on patching see e.g. http://jungels.net/articles/diff-patch-ten-minutes.html. Please let me know if the patch works.
+
+My first impressions of the SPL are quite mixed. It seems much more complicated than e.g. Wiring for Arduino. However, as said before the STM8 SPL is very similar to the STM32 SPL. And for the latter with 100x registers, a HW-lib is almost mandatory. In addition STM provides a lot of ready-made software which is based on the SPL. So I guess it’s worth digging into… Let me know what you think!?
+
+Any feedback and/or support on the above open points is highly welcome! 
+
+Regards,
+Georg Icking-Konert
 
 ====================================
 
 Revision History
 ----------------
 
-1.0 (2014-12-21): initial release by Georg Icking-Konert under the Apache License 2.0
+1.0 (2015-02-16): initial release by Georg Icking-Konert
 =======
 # SPL_2.2.0_SDCC_patch
 SDCC patch of STM8 Standard Peripherals Library v2.2.0
