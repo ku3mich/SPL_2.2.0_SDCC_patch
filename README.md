@@ -20,9 +20,9 @@ Open points —> questions to you:
   - SDCC requires the interrupt token AFTER the function name in ISR declaration. I have fixed all examples, but this requires a manual fix for other libs that rely on SPL (see STM homepage). However, according to Erik and Philipp this would require a change of the SDCC parser with associated risks --> not likely to be changed
   - the trap handler requires a recent nightly-build. To skip, set SKIP_TRAPS=1 in Makefile. Trap handling is planned for the next release (when?)
 
-Legal status:
-  - STM has indicated that they may approve of distribution of the modified sources. But nothing official, yet
-  - I would still prefer STM to support SDCC officially to assert future consistency. But so far no news on this
+Legal status (2015-03-04):
+  - STM replied that they don't no new STM8 official release is planned
+  - discussion inside STM is ongoing whether to update the SPL license to enable redistribution
 
 For instructions on patching see e.g. http://jungels.net/articles/diff-patch-ten-minutes.html. Please let me know if the patch works.
 
