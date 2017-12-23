@@ -1,3 +1,8 @@
+**This patch is no longer maintained! Please use the more general [STM8-SPL_SDCC_patch](https://github.com/gicking/STM8-SPL_SDCC_patch) instead**
+
+--------------------------------------------------
+
+
 Patch for STM8 Standard Peripherals Library v2.2.0
 --------------------------------------------------
 
